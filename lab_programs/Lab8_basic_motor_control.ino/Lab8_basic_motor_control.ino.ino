@@ -17,8 +17,9 @@ void setup()
   pinMode(BIN1, OUTPUT);
   pinMode(BIN2, OUTPUT);
   pinMode(PWMB, OUTPUT);
-}
+} // end setup() function 
 
+/*
 void loop()
 {
   // pause for 1/2 second--get ready!
@@ -54,4 +55,59 @@ void loop()
   analogWrite(PWMB, 255/2);
   delay(500);
   analogWrite(PWMB, 0);
-}
+} // end loop() function
+*/
+
+// Sign-off loop() function
+
+
+void loop()
+{
+  // Pause for 1/2 second
+  delay(500);
+
+  // Forward motor A at 30% power for 2 seconds
+  digitalWrite(AIN2, LOW);
+  digitalWrite(AIN1, HIGH);
+  analogWrite(PWMA, 255 / 3);
+
+  // Forward motor B at 30% power for 2 seconds
+  digitalWrite(BIN2, LOW);
+  digitalWrite(BIN1, HIGH);
+  analogWrite(PWMB, 255 / 3);
+  delay(2000);
+  analogWrite(PWMA, 0);
+  analogWrite(PWMB, 0);
+
+  // Pause for 1/2 second
+  delay(500);
+
+  // Turn left for 0.5 seconds
+  digitalWrite(AIN1, LOW);
+  digitalWrite(AIN2, LOW);
+  digitalWrite(BIN1, HIGH);
+  digitalWrite(BIN2, LOW);
+  analogWrite(PWMA, 255 / 2); // Assuming full power for the turn
+  analogWrite(PWMB, 255 / 2);
+  delay(500);
+  analogWrite(PWMA, 0);
+  analogWrite(PWMB, 0);
+
+  // Pause for 1/2 second
+  delay(500);
+
+  // Reverse motor A at 50% power for 2 seconds
+  digitalWrite(AIN1, LOW);
+  digitalWrite(AIN2, HIGH);
+  analogWrite(PWMA, 255 / 2);
+
+  // Reverse motor B at 50% power for 2 seconds
+  digitalWrite(BIN1, LOW);
+  digitalWrite(BIN2, HIGH);
+  analogWrite(PWMB, 255 / 2);
+  delay(2000);
+  analogWrite(PWMA, 0);
+  analogWrite(PWMB, 0);
+} // end loop function
+
+
